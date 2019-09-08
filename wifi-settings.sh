@@ -17,7 +17,7 @@ if [ $exitstatus = 1 ]; then
 	exit 1 || return 1
 fi
 # Enter Password
-PSWD=$(whiptail --inputbox "What is your WiFi name?" 8 78 --title "WiFi Password" 3>&1 1>&2 2>&3)
+PSWD=$(whiptail --inputbox "What is your WiFi Password?" 8 78 --title "WiFi Password" 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 1 ]; then
 	exit 1 || return 1
@@ -26,11 +26,11 @@ fi
 sudo rm -rf /etc/wpa_supplicant/wpa_supplicant.conf
 sudo wget https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/wpa_supplicant.conf
 sudo mv wpa_supplicant.conf /etc/wpa_supplicant/
-sudo sed -i -e 's/mySSID/$SSID/g' /etc/wpa_supplicant/wpa_supplicant.conf
-sudo sed -i -e 's/myPassword/$PSWD/g' /etc/wpa_supplicant/wpa_supplicant.conf
+sudo sed -i -e "s/mySSID/$SSID/g" /etc/wpa_supplicant/wpa_supplicant.conf
+sudo sed -i -e "s/myPassword/$PSWD/g" /etc/wpa_supplicant/wpa_supplicant.conf
 # Reboot System
 if (whiptail --title "Reboot Permission" --yesno "Do you want to reboot now (y/n)?" 10 60) then
 sudo reboot now
 else
-echo "Please reboot otherwise Thingsboard platform will not start ...."
+echo "Please reboot manually ...."
 fi
