@@ -2,7 +2,7 @@
 START=$(date +%s)
 bold=$(tput bold)
 normal=$(tput sgr0)
-whiptail --title "Permission" --yesno "This script will install ThingsBoard IOT platform on Raspberry-Pi B+. Do you want to continue (yes/no)?" 10 60
+whiptail --title "Permission" --yesno "This script will install ThingsBoard IoT platform on Raspberry-Pi. Do you want to continue (yes/no)?" 10 60
 exitstatus=$?
 if [ $exitstatus = 1 ]; then
 exit 1 || return 1
@@ -21,7 +21,7 @@ now=$(date)
 echo -e "\e[30;48;5;82m*** Downloading ThingsBoard IoT Platform ***\e[0m"
 wget https://github.com/thingsboard/thingsboard/releases/download/v2.2/thingsboard-2.2.deb 2>&1 |\
 stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
-dialog --gauge "Downloading Thingsboard Platform" 10 100
+dialog --gauge "Downloading Thingsboard Platform. The downloading process may take some minutes depending on the speed of your internet." 10 100
 clear
 echo -ne '\007'
 echo -e "\e[30;48;5;82m*** Installing ThingsBoard as a service ***\e[0m"
@@ -34,16 +34,18 @@ sudo service thingsboard start
 echo -e "\e[30;48;5;82m*** Finding IP address of the Thingsboard IOT Platform ***\e[0m"
 ipv4=$(curl ifconfig.co)
 ipv41=$(hostname -I)
-echo -e "\e[30;48;5;82m***** How to access dashboard? *****\e[0m"
-echo "ThingsBoard platform can be accessed using the following links, try them to see which one works. Please note down these links as you will need them later on."
-echo -e "\e[4mhttp://$ipv4:8080/login\e[0m"
-echo -e "\e[4mhttp://$ipv41:8080/login\e[0m"
-echo -e "\e[31;43m***** All Done! *****\e[0m"
+clear
+echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"
 END=$(date +%s)
 DIFF=$(( $END - $START ))
 echo "It took $DIFF seconds to complete this installation process."
+echo
+echo -e "\e[30;48;5;82m***** How to access dashboard? *****\e[0m"
+echo -e "\e[30;48;5;82mThingsBoard platform can be accessed using the following links. Try them one by one to see which one works. Please note down these links as you will need them later on.\e[0m"
+echo -e "\e[4mhttp://$ipv4:8080/login\e[0m"
+echo -e "\e[4mhttp://$ipv41:8080/login\e[0m"
 if (whiptail --title "Reboot Permission" --yesno "Do you want to reboot now (y/n)?" 10 60) then
 sudo reboot now
 else
-echo "Please reboot manually otherwise Thingsboard IoT platform will not start ...."
+echo "Please reboot manually otherwise Thingsboard IoT platform may not start properly ...."
 fi
