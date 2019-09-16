@@ -1,0 +1,670 @@
+{
+  "title": "Nerve Stretcher",
+  "configuration": {
+    "widgets": {
+      "b90b4011-5854-f131-ed3b-d530a509caff": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "led_indicator",
+        "type": "rpc",
+        "title": "New widget",
+        "sizeX": 2,
+        "sizeY": 2,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": false,
+            "ledColor": "#00ff00",
+            "valueAttribute": "LED1",
+            "retrieveValueMethod": "attribute",
+            "parseValueFunction": "return data ? true : false;",
+            "performCheckStatus": false,
+            "checkStatusMethod": "checkStatus"
+          },
+          "title": "Device Indicator",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 0,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "4696f1e3-9d0f-5259-6a5c-b989062b32c4"
+          ]
+        },
+        "id": "b90b4011-5854-f131-ed3b-d530a509caff"
+      },
+      "6cfcc0eb-f3cc-74af-316e-553fff409fff": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "knob_control",
+        "type": "rpc",
+        "title": "New widget",
+        "sizeX": 4,
+        "sizeY": 4,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": true,
+          "backgroundColor": "#feffff",
+          "color": "rgb(0, 0, 0)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "maxValue": 100,
+            "initialValue": 0,
+            "minValue": 0,
+            "getValueMethod": "getValue",
+            "setValueMethod": "setValue"
+          },
+          "title": "Pressure Knob",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 0,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "4696f1e3-9d0f-5259-6a5c-b989062b32c4"
+          ],
+          "units": ""
+        },
+        "id": "6cfcc0eb-f3cc-74af-316e-553fff409fff"
+      },
+      "a074e37a-25b9-213a-b79b-37fb6ac23807": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "round_switch",
+        "type": "rpc",
+        "title": "New widget",
+        "sizeX": 2,
+        "sizeY": 2,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": false,
+            "getValueMethod": "getValue",
+            "setValueMethod": "POWERSWITCH",
+            "retrieveValueMethod": "attribute",
+            "valueKey": "POWERSWITCH",
+            "parseValueFunction": "return data ? true : false;",
+            "convertValueFunction": "return value;"
+          },
+          "title": "Power Switch",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "4696f1e3-9d0f-5259-6a5c-b989062b32c4"
+          ]
+        },
+        "id": "a074e37a-25b9-213a-b79b-37fb6ac23807"
+      },
+      "82461bdd-9814-f54c-1908-bc30db796443": {
+        "isSystemType": true,
+        "bundleAlias": "charts",
+        "typeAlias": "basic_timeseries",
+        "type": "timeseries",
+        "title": "New widget",
+        "sizeX": 17,
+        "sizeY": 4,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "dataKeys": [
+                {
+                  "name": "mmHg",
+                  "type": "timeseries",
+                  "label": "mmHg",
+                  "color": "#2196f3",
+                  "settings": {
+                    "showLines": true,
+                    "fillLines": false,
+                    "showPoints": false,
+                    "tooltipValueFormatter": "",
+                    "showSeparateAxis": false,
+                    "axisTitle": "",
+                    "axisPosition": "left",
+                    "axisTicksFormatter": ""
+                  },
+                  "_hash": 0.46520798157659704
+                }
+              ],
+              "entityAliasId": "4696f1e3-9d0f-5259-6a5c-b989062b32c4"
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "interval": 5000,
+              "timewindowMs": 60000
+            },
+            "aggregation": {
+              "type": "NONE",
+              "limit": 1608
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "shadowSize": 4,
+            "fontColor": "#545454",
+            "fontSize": 10,
+            "xaxis": {
+              "showLabels": true,
+              "color": "#545454"
+            },
+            "yaxis": {
+              "showLabels": true,
+              "color": "#545454",
+              "min": 0,
+              "max": 100,
+              "tickDecimals": 0
+            },
+            "grid": {
+              "color": "#545454",
+              "tickColor": "#DDDDDD",
+              "verticalLines": true,
+              "horizontalLines": true,
+              "outlineWidth": 1
+            },
+            "stack": false,
+            "tooltipIndividual": false,
+            "smoothLines": true
+          },
+          "title": "Real-Time Graphical Representation of Pressure",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "mobileHeight": null,
+          "widgetStyle": {},
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {}
+        },
+        "id": "82461bdd-9814-f54c-1908-bc30db796443"
+      },
+      "69c3b8ff-6fe0-76f3-7f83-1b8894bebf69": {
+        "isSystemType": true,
+        "bundleAlias": "cards",
+        "typeAlias": "html_card",
+        "type": "static",
+        "title": "New widget",
+        "sizeX": 7,
+        "sizeY": 6,
+        "config": {
+          "datasources": [],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "cardCss": ".card {\n    font-weight: bold;\n    font-size: 32px;\n    color: #999;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}",
+            "cardHtml": "<iframe src=\"http://localhost:8081/\" align=\"center\" width=\"640\" height=\"480\" frameborder=\"0\"></iframe>"
+          },
+          "title": "Animal Monitoring (Live View)",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {}
+        },
+        "id": "69c3b8ff-6fe0-76f3-7f83-1b8894bebf69"
+      },
+      "72262680-ec15-5e77-886d-22cd64b1859b": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "led_indicator",
+        "type": "rpc",
+        "title": "New widget",
+        "sizeX": 2.5,
+        "sizeY": 2.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": false,
+            "ledColor": "#d32f2f",
+            "valueAttribute": "LED2",
+            "retrieveValueMethod": "attribute",
+            "parseValueFunction": "return data ? true : false;",
+            "performCheckStatus": false,
+            "checkStatusMethod": "checkStatus"
+          },
+          "title": "Pump Indicator",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "4696f1e3-9d0f-5259-6a5c-b989062b32c4"
+          ]
+        },
+        "id": "72262680-ec15-5e77-886d-22cd64b1859b"
+      },
+      "0a6b317d-f3b4-8ef6-6a9b-b53f212f0ce2": {
+        "isSystemType": true,
+        "bundleAlias": "cards",
+        "typeAlias": "simple_card",
+        "type": "latest",
+        "title": "Simple card",
+        "sizeX": 5,
+        "sizeY": 2,
+        "row": 0,
+        "col": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "entityAliasId": "4696f1e3-9d0f-5259-6a5c-b989062b32c4",
+              "dataKeys": [
+                {
+                  "name": "active",
+                  "label": "Device Active",
+                  "type": "attribute",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.304049905661937
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "rgb(96, 173, 235)",
+          "color": "rgba(255, 255, 255, 0.87)",
+          "padding": "16px",
+          "settings": {
+            "labelPosition": "top"
+          },
+          "title": "DEVICE STATUS",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "units": "",
+          "decimals": 0,
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "widgetStyle": {},
+          "actions": {}
+        },
+        "id": "0a6b317d-f3b4-8ef6-6a9b-b53f212f0ce2"
+      },
+      "f58f1a52-6e51-aca8-a1f7-698cfca19349": {
+        "isSystemType": true,
+        "bundleAlias": "cards",
+        "typeAlias": "simple_card",
+        "type": "latest",
+        "title": "Simple card",
+        "sizeX": 3,
+        "sizeY": 2,
+        "row": 0,
+        "col": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "entityAliasId": "cd845592-a670-feb0-c51b-2c84136388e5",
+              "dataKeys": [
+                {
+                  "name": "picFiles",
+                  "type": "timeseries",
+                  "label": "picFiles",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.2650607429812686
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "#ef6b42",
+          "color": "rgba(255, 255, 255, 0.87)",
+          "padding": "16px",
+          "settings": {
+            "labelPosition": "top"
+          },
+          "title": "Total Images",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "units": "",
+          "decimals": 0,
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "widgetStyle": {},
+          "actions": {}
+        },
+        "id": "f58f1a52-6e51-aca8-a1f7-698cfca19349"
+      },
+      "c4e2bfad-7c06-3597-9852-7a2f9442d616": {
+        "isSystemType": true,
+        "bundleAlias": "analogue_gauges",
+        "typeAlias": "speed_gauge_canvas_gauges",
+        "type": "latest",
+        "title": "New widget",
+        "sizeX": 4,
+        "sizeY": 4,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "dataKeys": [
+                {
+                  "name": "mmHg",
+                  "type": "timeseries",
+                  "label": "mmHg",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.6551014332373346
+                }
+              ],
+              "entityAliasId": "4696f1e3-9d0f-5259-6a5c-b989062b32c4"
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "maxValue": 100,
+            "startAngle": 45,
+            "ticksAngle": 270,
+            "showBorder": false,
+            "defaultColor": "#e65100",
+            "needleCircleSize": 7,
+            "highlights": [
+              {
+                "from": 70,
+                "to": 80,
+                "color": "#fdd835"
+              },
+              {
+                "color": "#e57373",
+                "to": 100,
+                "from": 80
+              }
+            ],
+            "showUnitTitle": false,
+            "colorPlate": "#fff",
+            "colorMajorTicks": "#444",
+            "colorMinorTicks": "#666",
+            "minorTicks": 2,
+            "valueInt": 3,
+            "minValue": 0,
+            "highlightsWidth": 15,
+            "valueBox": true,
+            "animation": true,
+            "animationDuration": 1500,
+            "animationRule": "linear",
+            "colorNeedleShadowUp": "rgba(2, 255, 255, 0)",
+            "colorNeedleShadowDown": "rgba(188, 143, 143, 0.78)",
+            "majorTicksCount": 10,
+            "numbersFont": {
+              "family": "Roboto",
+              "size": 22,
+              "style": "normal",
+              "weight": "500",
+              "color": "#616161"
+            },
+            "titleFont": {
+              "family": "Roboto",
+              "size": 24,
+              "style": "normal",
+              "weight": "500",
+              "color": "#888"
+            },
+            "unitsFont": {
+              "family": "Roboto",
+              "size": 28,
+              "style": "normal",
+              "weight": "500",
+              "color": "#616161"
+            },
+            "valueFont": {
+              "size": 32,
+              "style": "normal",
+              "weight": "normal",
+              "shadowColor": "rgba(0, 0, 0, 0.49)",
+              "color": "#444",
+              "family": "Segment7Standard"
+            },
+            "colorValueBoxRect": "#888",
+            "colorValueBoxRectEnd": "#666",
+            "colorValueBoxBackground": "#babab2",
+            "colorValueBoxShadow": "rgba(0,0,0,1)"
+          },
+          "title": "Negative Pressure Gauge",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "widgetStyle": {},
+          "decimals": 0,
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {}
+        },
+        "id": "c4e2bfad-7c06-3597-9852-7a2f9442d616"
+      }
+    },
+    "states": {
+      "default": {
+        "name": "Nerve Stretcher",
+        "root": true,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "b90b4011-5854-f131-ed3b-d530a509caff": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 2,
+                "col": 15
+              },
+              "6cfcc0eb-f3cc-74af-316e-553fff409fff": {
+                "sizeX": 4,
+                "sizeY": 4,
+                "row": 0,
+                "col": 11
+              },
+              "a074e37a-25b9-213a-b79b-37fb6ac23807": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 0,
+                "col": 15
+              },
+              "82461bdd-9814-f54c-1908-bc30db796443": {
+                "sizeX": 17,
+                "sizeY": 4,
+                "mobileHeight": null,
+                "row": 6,
+                "col": 0
+              },
+              "69c3b8ff-6fe0-76f3-7f83-1b8894bebf69": {
+                "sizeX": 7,
+                "sizeY": 6,
+                "row": 0,
+                "col": 0
+              },
+              "72262680-ec15-5e77-886d-22cd64b1859b": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 4,
+                "col": 15
+              },
+              "0a6b317d-f3b4-8ef6-6a9b-b53f212f0ce2": {
+                "sizeX": 5,
+                "sizeY": 2,
+                "row": 4,
+                "col": 10
+              },
+              "f58f1a52-6e51-aca8-a1f7-698cfca19349": {
+                "sizeX": 3,
+                "sizeY": 2,
+                "row": 4,
+                "col": 7
+              },
+              "c4e2bfad-7c06-3597-9852-7a2f9442d616": {
+                "sizeX": 4,
+                "sizeY": 4,
+                "row": 0,
+                "col": 7
+              }
+            },
+            "gridSettings": {
+              "backgroundColor": "#eeeeee",
+              "color": "rgba(0,0,0,0.870588)",
+              "columns": 24,
+              "margins": [
+                10,
+                10
+              ],
+              "backgroundSizeMode": "cover",
+              "autoFillHeight": false,
+              "mobileAutoFillHeight": false,
+              "mobileRowHeight": 70,
+              "backgroundImageUrl": null
+            }
+          }
+        }
+      }
+    },
+    "entityAliases": {
+      "4696f1e3-9d0f-5259-6a5c-b989062b32c4": {
+        "id": "4696f1e3-9d0f-5259-6a5c-b989062b32c4",
+        "alias": "Nerve Stretcher",
+        "filter": {
+          "type": "singleEntity",
+          "resolveMultiple": false,
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "30f8a9c0-d88a-11e9-8582-8f975f5efa5f"
+          }
+        }
+      },
+      "cd845592-a670-feb0-c51b-2c84136388e5": {
+        "id": "cd845592-a670-feb0-c51b-2c84136388e5",
+        "alias": "Image Counter",
+        "filter": {
+          "type": "singleEntity",
+          "resolveMultiple": false,
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "37436180-d88a-11e9-8582-8f975f5efa5f"
+          }
+        }
+      }
+    },
+    "timewindow": {
+      "displayValue": "",
+      "selectedTab": 0,
+      "realtime": {
+        "interval": 1000,
+        "timewindowMs": 60000
+      },
+      "history": {
+        "historyType": 0,
+        "interval": 1000,
+        "timewindowMs": 60000,
+        "fixedTimewindow": {
+          "startTimeMs": 1555617042518,
+          "endTimeMs": 1555703442518
+        }
+      },
+      "aggregation": {
+        "type": "AVG",
+        "limit": 25000
+      }
+    },
+    "settings": {
+      "stateControllerId": "entity",
+      "showTitle": false,
+      "showDashboardsSelect": false,
+      "showEntitiesSelect": true,
+      "showDashboardTimewindow": false,
+      "showDashboardExport": true,
+      "toolbarAlwaysOpen": true,
+      "titleColor": "rgba(0,0,0,0.870588)"
+    }
+  },
+  "name": "Nerve Stretcher"
+}
