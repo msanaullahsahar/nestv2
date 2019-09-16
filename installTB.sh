@@ -1,14 +1,11 @@
 #!/bin/bash
-START=$(date +%s)
-bold=$(tput bold)
-normal=$(tput sgr0)
+clear
 whiptail --title "Permission" --yesno "This script will install ThingsBoard IoT platform on Raspberry-Pi. Do you want to continue (yes/no)?" 10 60
 exitstatus=$?
 if [ $exitstatus = 1 ]; then
 exit 1 || return 1
 fi
 echo -e "\e[30;48;5;82m***** Welcome. Automatic Installation Begins *****\e[0m"
-echo -e "\e[30;48;5;82m*** Current Date and Time : $now ***\e[0m"
 sudo apt-get update -y
 sudo apt-get install whiptail -y
 sudo apt-get install dialog -y
@@ -17,14 +14,13 @@ sudo apt-get install unzip -y
 sudo apt-get install curl -y
 sudo apt-get install default-jdk -y
 echo -ne '\007'
-now=$(date)
 echo -e "\e[30;48;5;82m*** Downloading ThingsBoard IoT Platform ***\e[0m"
 wget https://github.com/thingsboard/thingsboard/releases/download/v2.2/thingsboard-2.2.deb 2>&1 |\
 stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
 dialog --gauge "Downloading Thingsboard Platform. The downloading process may take some minutes depending on the speed of your internet." 10 100
 clear
 echo -ne '\007'
-echo -e "\e[30;48;5;82m*** Installing ThingsBoard as a service ***\e[0m"
+echo -e "\e[30;48;5;82m*** Installing ThingsBoard ***\e[0m"
 sudo dpkg -i thingsboard-2.2.deb
 sudo /usr/share/thingsboard/bin/install/install.sh
 echo -e "\e[30;48;5;82m*** Restrict ThingsBoard to 512MB of memory usage ***\e[0m"
@@ -36,8 +32,6 @@ ipv4=$(curl ifconfig.co)
 ipv41=$(hostname -I)
 clear
 echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"
-END=$(date +%s)
-DIFF=$(( $END - $START ))
 echo "It took $DIFF seconds to complete this installation process."
 echo
 echo -e "\e[30;48;5;82m***** How to access dashboard? *****\e[0m"
