@@ -7,6 +7,5 @@ fileExt = ('*.avi', '*.jpg')
 files_grabbed = []
 for files in fileExt:
 	files_grabbed.extend(glob.glob(files))
-
 for filename in files_grabbed:
 	os.unlink(filename)
