@@ -4,7 +4,7 @@ sudo apt-get install whiptail -y
 sudo apt-get install wget -y
 echo -ne '\007'
 # Ask permission to set WiFi
-whiptail --title "Permission" --yesno "WiFi-Settings Script. Do you want to continue (yes/no)?" 10 60
+whiptail --title "Permission" --yesno "WiFi-Setting's Script. Do you want to continue (yes/no)?" 10 60
 exitstatus=$?
 if [ $exitstatus = 1 ]; then
 exit 1 || return 1
@@ -17,7 +17,7 @@ if [ $exitstatus = 1 ]; then
 	exit 1 || return 1
 fi
 # Enter Password
-PSWD=$(whiptail --inputbox "What is your WiFi Password?" 8 78 --title "WiFi Password" 3>&1 1>&2 2>&3)
+PSWD=$(whiptail --inputbox "Please supply your WiFi Password?" 8 78 --title "WiFi Password" 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 1 ]; then
 	exit 1 || return 1
