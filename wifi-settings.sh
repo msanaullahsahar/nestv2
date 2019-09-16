@@ -39,5 +39,5 @@ sudo sed -i -e "s/myPassword/$PSWD/g" /etc/wpa_supplicant/wpa_supplicant.conf
 if (whiptail --title "Reboot Permission" --yesno "Do you want to reboot now (y/n)?" 10 60) then
 sudo reboot now
 else
-echo -e "\e[30;48;5;82m***** Please reboot manually .... *****\e[0m"
+echo -e "\e[30;48;5;82m***** Please reboot manually. WiFi will work only after reboot .... *****\e[0m"
 fi
