@@ -31,6 +31,7 @@ echo -e "\e[30;48;5;82m***** Edit Motion File *****\e[0m"
 sudo sed -i -e 's/start_motion_daemon=no/start_motion_daemon=yes/g' /etc/default/motion
 echo -e "\e[30;48;5;82m***** Restart Motion *****\e[0m"
 sudo service motion restart
+sleep 5
 echo -e "\e[30;48;5;82m***** Run Motion *****\e[0m"
 sudo motion
 echo -e "\e[30;48;5;82m***** Downloading Count Pics and Clear Pics Stuff *****\e[0m"
