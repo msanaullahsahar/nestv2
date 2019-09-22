@@ -42,9 +42,11 @@ echo 'export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/thingsboard'
 echo 'export SPRING_DATASOURCE_USERNAME=postgres' >> /etc/thingsboard/conf/thingsboard.conf
 echo 'export SPRING_DATASOURCE_PASSWORD=post24984' >> /etc/thingsboard/conf/thingsboard.conf
 echo -e "\e[30;48;5;82m*** Installing ThingsBoard Platform ***\e[0m"
-sudo /usr/share/thingsboard/bin/install/install.sh
+sudo /usr/share/thingsboard/bin/install/install.sh --loadDemo
 echo -e "\e[30;48;5;82m***** Starting Thingsboard as a Service *****\e[0m"
-sudo service thingsboard start
+sudo systemctl enable thingsboard
+sudo systemctl start thingsboard
+#sudo service thingsboard start
 echo -e "\e[30;48;5;82m*** Finding IP address of the Thingsboard IOT Platform ***\e[0m"
 ipv4=$(curl ifconfig.co)
 ipv41=$(hostname -I)
