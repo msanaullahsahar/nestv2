@@ -53,7 +53,7 @@ echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"
 echo "It took $DIFF seconds to complete this installation process."
 echo
 echo -e "\e[30;48;5;82m***** How to access dashboard? *****\e[0m"
-echo -e "\e[30;48;5;82mThingsBoard platform can be accessed using the following links. Try them one by one to see which one works. Please note down these links as you will need them later on.\e[0m"
+echo -e "\e[30;48;5;82mThingsBoard platform can be accessed using the following links. Try them one by one to see which one works. Please wait for at least 10 minutes before accessing thingsboard platform.\e[0m"
 echo -e "\e[4mhttp://$ipv4:8080/login\e[0m"
 echo -e "\e[4mhttp://$ipv41:8080/login\e[0m"
 if (whiptail --title "Reboot Permission" --yesno "Do you want to reboot now (y/n)?" 10 60) then
