@@ -1,4 +1,5 @@
 #!/bin/bash
+START=$(date +%s)
 clear
 whiptail --title "Permission" --yesno "This script will install ThingsBoard IoT platform on Raspberry-Pi. Do you want to continue (yes/no)?" 10 60
 exitstatus=$?
@@ -51,23 +52,26 @@ echo -e "\e[30;48;5;82m***** Starting Thingsboard as a Service *****\e[0m"
 sudo systemctl enable thingsboard
 sudo systemctl start thingsboard
 #sudo service thingsboard start
-echo -e "\e[30;48;5;82m*** Finding IP address of the Thingsboard IOT Platform ***\e[0m"
-ipv4=$(curl ifconfig.co)
-ipv41=$(hostname -I)
-clear
-echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"
-echo "It took $DIFF seconds to complete this installation process."
+#echo -e "\e[30;48;5;82m*** Finding IP address of the Thingsboard IOT Platform ***\e[0m"
+#ipv4=$(curl ifconfig.co)
+#ipv41=$(hostname -I)
 echo
-echo -e "\e[30;48;5;82m ***** How to access dashboard? *****\e[0m"
-echo -e "\e[30;48;5;82m ThingsBoard platform can be accessed using the following links. Try them one by one to see which one works. Please wait for at least 10 minutes before accessing thingsboard platform.\e[0m"
-echo -e "\e[30;48;5;82m http://$ipv4:8080/login\e[0m"
-echo -e "\e[30;48;5;82m http://$ipv41:8080/login\e[0m"
 echo -e "\e[30;48;5;82m Installing Proxy Server\e[0m"
 sudo apt install nginx -y
 wget "https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/thingsboard.conf"
 sudo mv thingsboard.conf /etc/nginx/conf.d/thingsboard.conf
 sudo systemctl restart nginx
 echo
+clear
+echo -e "\e[30;48;5;82m ***** How to access dashboard? *****\e[0m"
+echo -e "\e[30;48;5;82m ThingsBoard platform can be accessed by using the following link.\e[0m"
+#echo -e "\e[30;48;5;82m http://$ipv4:8080/login\e[0m"
+#echo -e "\e[30;48;5;82m http://$ipv41:8080/login\e[0m"
+echo -e "\e[30;48;5;82m http://raspberrypi/login\e[0m"
+echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"t
+END=$(date +%s)
+DIFF=$(( $END - $START ))
+echo "It took $DIFF seconds to complete this installaion process."
 if (whiptail --title "Reboot Permission" --yesno "Do you want to reboot now (y/n)?" 10 60) then
 sudo reboot now
 else
