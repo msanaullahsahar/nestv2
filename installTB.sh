@@ -58,10 +58,16 @@ clear
 echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"
 echo "It took $DIFF seconds to complete this installation process."
 echo
-echo -e "\e[30;48;5;82m***** How to access dashboard? *****\e[0m"
-echo -e "\e[30;48;5;82mThingsBoard platform can be accessed using the following links. Try them one by one to see which one works. Please wait for at least 10 minutes before accessing thingsboard platform.\e[0m"
-echo -e "\e[4mhttp://$ipv4:8080/login\e[0m"
-echo -e "\e[4mhttp://$ipv41:8080/login\e[0m"
+echo -e "\e[30;48;5;82m ***** How to access dashboard? *****\e[0m"
+echo -e "\e[30;48;5;82m ThingsBoard platform can be accessed using the following links. Try them one by one to see which one works. Please wait for at least 10 minutes before accessing thingsboard platform.\e[0m"
+echo -e "\e[30;48;5;82m http://$ipv4:8080/login\e[0m"
+echo -e "\e[30;48;5;82m http://$ipv41:8080/login\e[0m"
+echo -e "\e[30;48;5;82m Installing Proxy Server\e[0m"
+sudo apt install nginx -y
+wget "https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/thingsboard.conf"
+sudo mv thingsboard.conf /etc/nginx/conf.d/thingsboard.conf
+sudo systemctl restart nginx
+echo
 if (whiptail --title "Reboot Permission" --yesno "Do you want to reboot now (y/n)?" 10 60) then
 sudo reboot now
 else
