@@ -27,9 +27,13 @@ echo -e "\e[30;48;5;82m*** Making ThingsBoard Platform Ready for Installation***
 sudo dpkg -i $thingsboard
 echo -e "\e[30;48;5;82m*** Installing PostgreSQL ***\e[0m"
 sudo apt-get install -y postgresql postgresql-contrib
-sudo service postgresql restart
+sudo systemctl enable postgresql
+sudo systemctl start thingsboard
+sudo service postgresql start
 su - postgres -c "psql -U postgres -d postgres -c \"alter user postgres with password 'post24984';\""
 sudo -u postgres psql -c 'create database thingsboard;'
+echo -e "\e[30;48;5;82m*** Changing Port ***\e[0m"
+sudo sed -i -e 's/${HTTP_BIND_PORT:8080}/${HTTP_BIND_PORT:8070}/g' /etc/thingsboard/conf/thingsboard.yml
 echo -e "\e[30;48;5;82m*** Restrict ThingsBoard to 512MB of memory usage ***\e[0m"
 echo 'export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms512M -Xmx512M"' >> /etc/thingsboard/conf/thingsboard.conf
 echo -e "\e[30;48;5;82m*** Configuring database for Thingsboard ***\e[0m"
