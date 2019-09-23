@@ -42,9 +42,12 @@ sudo wget https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/clearP
 sudo wget https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/cam.sh
 sudo chmod a+x countPics.py clearPics.py countPics.sh cam.sh 
 echo -e "\e[30;48;5;82m***** Modifying CRONTAB *****\e[0m"
-echo '*/5 * * * * sudo python /root/clearPics.py' >> /var/spool/cron/crontabs/root
-echo '@reboot ( sleep 2 ;sh /root/countPics.sh )' >> /var/spool/cron/crontabs/root
-echo '@reboot ( sleep 10 ;sh /root/cam.sh )' >> /var/spool/cron/crontabs/root
+echo '*/5 * * * * sudo python /home/pi/clearPics.py' >> /var/spool/cron/crontabs/root
+echo '@reboot ( sleep 2 ;sh /home/pi/countPics.sh )' >> /var/spool/cron/crontabs/root
+echo '@reboot ( sleep 10 ;sh /home/pi/cam.sh )' >> /var/spool/cron/crontabs/root
+#echo '*/5 * * * * sudo python /root/clearPics.py' >> /var/spool/cron/crontabs/root
+#echo '@reboot ( sleep 2 ;sh /root/countPics.sh )' >> /var/spool/cron/crontabs/root
+#echo '@reboot ( sleep 10 ;sh /root/cam.sh )' >> /var/spool/cron/crontabs/root
 echo -e "\e[30;48;5;82m***** All Done ! *****\e[0m"
 if (whiptail --title "Reboot Permission" --yesno "Do you want to reboot now (y/n)?" 10 60) then
 sudo reboot now
