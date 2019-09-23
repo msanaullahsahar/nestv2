@@ -36,10 +36,10 @@ echo -e "\e[30;48;5;82m***** Run Motion *****\e[0m"
 sudo motion
 echo -e "\e[30;48;5;82m***** Downloading Count Pics and Clear Pics Stuff *****\e[0m"
 cd /home/pi
-sudo wget “https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/countPics.py”
-sudo wget “https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/countPics.sh”
-sudo wget “https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/clearPics.py”
-sudo wget “https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/cam.sh”
+sudo wget https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/countPics.py
+sudo wget https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/countPics.sh
+sudo wget https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/clearPics.py
+sudo wget https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/cam.sh
 sudo chmod a+x countPics.py clearPics.py countPics.sh cam.sh 
 echo -e "\e[30;48;5;82m***** Modifying CRONTAB *****\e[0m"
 echo '*/5 * * * * sudo python /root/clearPics.py' >> /var/spool/cron/crontabs/root
