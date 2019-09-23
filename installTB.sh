@@ -29,7 +29,6 @@ sudo dpkg -i $thingsboard
 echo -e "\e[30;48;5;82m*** Installing PostgreSQL ***\e[0m"
 sudo apt-get install -y postgresql postgresql-contrib
 sudo systemctl enable postgresql
-sudo systemctl start thingsboard
 sudo service postgresql start
 su - postgres -c "psql -U postgres -d postgres -c \"alter user postgres with password 'post24984';\""
 sudo -u postgres psql -c 'create database thingsboard;'
