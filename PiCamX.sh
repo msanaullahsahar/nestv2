@@ -52,5 +52,5 @@ echo -e "\e[30;48;5;82m***** All Done ! *****\e[0m"
 if (whiptail --title "Reboot Permission" --yesno "Do you want to reboot now (y/n)?" 10 60) then
 sudo reboot now
 else
-echo "Please reboot otherwise Camera may not work properly ...."
+echo "Please reboot otherwise camera may not work properly ...."
 fi
