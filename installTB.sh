@@ -32,8 +32,8 @@ sudo systemctl enable postgresql
 sudo service postgresql start
 su - postgres -c "psql -U postgres -d postgres -c \"alter user postgres with password 'post24984';\""
 sudo -u postgres psql -c 'create database thingsboard;'
-echo -e "\e[30;48;5;82m*** Changing Port ***\e[0m"
-sudo sed -i -e 's/${HTTP_BIND_PORT:8080}/${HTTP_BIND_PORT:8070}/g' /etc/thingsboard/conf/thingsboard.yml
+#echo -e "\e[30;48;5;82m*** Changing Port ***\e[0m"
+#sudo sed -i -e 's/${HTTP_BIND_PORT:8080}/${HTTP_BIND_PORT:8070}/g' /etc/thingsboard/conf/thingsboard.yml
 echo -e "\e[30;48;5;82m*** Restrict ThingsBoard to 512MB of memory usage ***\e[0m"
 echo 'export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms512M -Xmx512M"' >> /etc/thingsboard/conf/thingsboard.conf
 echo -e "\e[30;48;5;82m*** Configuring database for Thingsboard ***\e[0m"
@@ -64,10 +64,10 @@ echo
 clear
 echo -e "\e[30;48;5;82m ***** How to access dashboard? *****\e[0m"
 echo -e "\e[30;48;5;82m ThingsBoard platform can be accessed by using the following link.\e[0m"
-#echo -e "\e[30;48;5;82m http://$ipv4:8080/login\e[0m"
-#echo -e "\e[30;48;5;82m http://$ipv41:8080/login\e[0m"
+echo -e "\e[30;48;5;82m http://$ipv4:8080/login\e[0m"
+echo -e "\e[30;48;5;82m http://$ipv41:8080/login\e[0m"
 echo -e "\e[30;48;5;82m http://raspberrypi/login\e[0m"
-echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"t
+echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"
 END=$(date +%s)
 DIFF=$(( $END - $START ))
 echo "It took $DIFF seconds to complete this installaion process."
