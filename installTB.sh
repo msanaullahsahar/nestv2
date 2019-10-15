@@ -26,6 +26,8 @@ thingsboard="$(find . -name "*.deb")"
 echo -ne '\007'
 echo -e "\e[30;48;5;82m*** Making ThingsBoard Platform Ready for Installation***\e[0m"
 sudo dpkg -i $thingsboard
+echo
+clear
 echo -e "\e[30;48;5;82m*** Installing PostgreSQL ***\e[0m"
 sudo apt-get install -y postgresql postgresql-contrib
 sudo systemctl enable postgresql
