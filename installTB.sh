@@ -57,15 +57,15 @@ sudo systemctl start thingsboard
 echo
 echo -e "\e[30;48;5;82m Installing Proxy Server\e[0m"
 sudo apt install nginx -y
-wget "https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/thingsboard.conf"
+sudo wget "https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/thingsboard.conf"
 sudo mv thingsboard.conf /etc/nginx/conf.d/thingsboard.conf
 sudo systemctl restart nginx
 echo
 clear
 echo -e "\e[30;48;5;82m ***** How to access dashboard? *****\e[0m"
 echo -e "\e[30;48;5;82m ThingsBoard platform can be accessed by using the following link.\e[0m"
-echo -e "\e[30;48;5;82m http://$ipv4:8080/login\e[0m"
-echo -e "\e[30;48;5;82m http://$ipv41:8080/login\e[0m"
+echo -e "\e[30;48;5;82m http://$ipv4:8070/login\e[0m"
+echo -e "\e[30;48;5;82m http://$ipv41:8070/login\e[0m"
 echo -e "\e[30;48;5;82m http://raspberrypi/login\e[0m"
 echo -e "\e[30;48;5;82m You may need port forwarding (port#8080) by visiting your router's admin page if you wish to access GUI from outside of your private network.\e[0m"
 echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"
