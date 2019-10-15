@@ -66,8 +66,8 @@ echo
 clear
 echo -e "\e[30;48;5;82m ***** How to access dashboard? *****\e[0m"
 echo -e "\e[30;48;5;82m ThingsBoard platform can be accessed by using the following link.\e[0m"
-echo -e "\e[30;48;5;82m http://$ipv4:8070/login\e[0m"
-echo -e "\e[30;48;5;82m http://$ipv41:8070/login\e[0m"
+echo -e "\e[30;48;5;82m http://$ipv4:8080/login\e[0m"
+echo -e "\e[30;48;5;82m http://$ipv41:8080/login\e[0m"
 echo -e "\e[30;48;5;82m http://raspberrypi/login\e[0m"
 echo -e "\e[30;48;5;82m You may need port forwarding (port#8080) by visiting your router's admin page if you wish to access GUI from outside of your private network.\e[0m"
 echo -e "\e[30;48;5;82m***** All Done! *****\e[0m"
