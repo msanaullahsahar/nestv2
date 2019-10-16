@@ -52,7 +52,7 @@ sudo -u postgres psql -c 'create database thingsboard;'
 echo -e "\e[30;48;5;82m*** Restrict ThingsBoard to 512MB of memory usage ***\e[0m"
 
 
-totalm=$(free -m | awk '/^Mem:/{print $2}') ; echo $totalm
+totalRam=$(free -m | awk '/^Mem:/{print $2}') ; echo $totalRam
 
 
 echo 'export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms512M -Xmx512M"' >> /etc/thingsboard/conf/thingsboard.conf
