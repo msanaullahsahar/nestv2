@@ -48,15 +48,23 @@ su - postgres -c "psql -U postgres -d postgres -c \"alter user postgres with pas
 sudo -u postgres psql -c 'create database thingsboard;'
 #echo -e "\e[30;48;5;82m*** Changing Port ***\e[0m"
 #sudo sed -i -e 's/${HTTP_BIND_PORT:8080}/${HTTP_BIND_PORT:8070}/g' /etc/thingsboard/conf/thingsboard.yml
-
-echo -e "\e[30;48;5;82m*** Restrict ThingsBoard to 512MB of memory usage ***\e[0m"
-
-
-totalRam=$(free -m | awk '/^Mem:/{print $2}') ; echo $totalRam
-
-
-echo 'export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms512M -Xmx512M"' >> /etc/thingsboard/conf/thingsboard.conf
-
+# Restrict ThingsBoard Memory Usage
+echo -e "\e[30;48;5;82m*** Restrict ThingsBoard Memory Usage ***\e[0m"
+totalRam=$(free -m | awk '/^Mem:/{print $2}')
+#echo $totalRam
+if [ $totalRam -lt 490 ]; then
+ echo "WARNING: Thingsboard IoT Platform may run very slow on your Raspberry-Pi."
+ echo 'export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms256M -Xmx256M"' >> /etc/thingsboard/conf/thingsboard.conf
+elif [ $totalRam -gt 3900 ]; then
+ echo "Your RAM is 4GB"
+ echo 'export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms2048M -Xmx2048M"' >> /etc/thingsboard/conf/thingsboard.conf
+elif [ $totalRam -gt 490 -o $totalRam -lt 1024 ]; then
+ echo "Your RAM is 1GB"
+ echo 'export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms512M -Xmx512M"' >> /etc/thingsboard/conf/thingsboard.conf
+else
+ echo "INFO: RAM size unknown."
+fi
+# Configuring database for Thingsboard
 echo -e "\e[30;48;5;82m*** Configuring database for Thingsboard ***\e[0m"
 echo '# DB Configuration' >> /etc/thingsboard/conf/thingsboard.conf
 echo 'export DATABASE_ENTITIES_TYPE=sql' >> /etc/thingsboard/conf/thingsboard.conf
@@ -72,19 +80,19 @@ echo -e "\e[30;48;5;82m***** Starting Thingsboard as a Service *****\e[0m"
 sudo systemctl enable thingsboard
 sudo systemctl start thingsboard
 #sudo service thingsboard start
-#echo -e "\e[30;48;5;82m*** Finding IP address of the Thingsboard IOT Platform ***\e[0m"
-#ipv4=$(curl ifconfig.co)
-#ipv41=$(hostname -I)
-echo
+echo -e "\e[30;48;5;82m*** Finding IP address of the Thingsboard IoT Platform ***\e[0m"
+ipv4=$(curl ifconfig.co)
+ipv41=$(hostname -I)
+# Installing Proxy Server
 echo -e "\e[30;48;5;82m Installing Proxy Server\e[0m"
 sudo apt install nginx -y
 sudo wget "https://raw.githubusercontent.com/msanaullahsahar/nestv2/master/thingsboard.conf"
 sudo mv thingsboard.conf /etc/nginx/conf.d/thingsboard.conf
 sudo systemctl restart nginx
-echo
 clear
+# How to access dashboard?
 echo -e "\e[30;48;5;82m ***** How to access dashboard? *****\e[0m"
-echo -e "\e[30;48;5;82m ThingsBoard platform can be accessed by using the following link.\e[0m"
+echo -e "\e[30;48;5;82m ThingsBoard platform can be accessed by using any of the following link.\e[0m"
 echo -e "\e[30;48;5;82m http://$ipv4:8080/login\e[0m"
 echo -e "\e[30;48;5;82m http://$ipv41:8080/login\e[0m"
 echo -e "\e[30;48;5;82m http://raspberrypi/login\e[0m"
