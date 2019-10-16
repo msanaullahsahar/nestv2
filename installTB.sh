@@ -1,4 +1,14 @@
 #!/bin/bash
+# Check if this script is run as root
+
+#if [[ $EUID -ne 0 ]]; then
+#   echo "This script must be run as root" 
+#   exit 1
+#fi
+if ! [ $(id -u) = 0 ]; then
+   echo "This script must be run as root."
+   exit 1
+fi
 START=$(date +%s)
 clear
 whiptail --title "Permission" --yesno "This script will install ThingsBoard IoT platform on Raspberry-Pi. Do you want to continue (yes/no)?" 10 60
@@ -13,8 +23,11 @@ sudo apt-get install dialog -y
 sudo apt-get install wget -y
 sudo apt-get install unzip -y
 sudo apt-get install curl -y
-sudo apt-get install default-jdk -y
-echo -ne '\007'
+# Install Open JDK 8
+echo -e "\e[30;48;5;82m*** Install Open JDK 8 ***\e[0m"
+echo 'deb http://ftp.de.debian.org/debian sid main' >> /etc/apt/sources.list
+sudo apt-get update -y
+sudo apt-get install openjdk-8-jdk
 clear
 echo -e "\e[31;43m*** Downloading Latest ThingsBoard Package ***\e[0m"
 URL=$(curl -s https://api.github.com/repos/thingsboard/thingsboard/releases/latest | grep browser_download_url.*deb | cut -d '"' -f 4)
@@ -23,7 +36,6 @@ wget "$URL" 2>&1 |\
 stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
 dialog --gauge "Downloading Thingsboard Platform. The downloading process may take some minutes depending on the speed of your internet." 10 100
 thingsboard="$(find . -name "*.deb")"
-echo -ne '\007'
 echo -e "\e[30;48;5;82m*** Making ThingsBoard Platform Ready for Installation***\e[0m"
 sudo dpkg -i $thingsboard
 echo
@@ -36,8 +48,15 @@ su - postgres -c "psql -U postgres -d postgres -c \"alter user postgres with pas
 sudo -u postgres psql -c 'create database thingsboard;'
 #echo -e "\e[30;48;5;82m*** Changing Port ***\e[0m"
 #sudo sed -i -e 's/${HTTP_BIND_PORT:8080}/${HTTP_BIND_PORT:8070}/g' /etc/thingsboard/conf/thingsboard.yml
+
 echo -e "\e[30;48;5;82m*** Restrict ThingsBoard to 512MB of memory usage ***\e[0m"
+
+
+totalm=$(free -m | awk '/^Mem:/{print $2}') ; echo $totalm
+
+
 echo 'export JAVA_OPTS="$JAVA_OPTS -Dplatform=rpi -Xms512M -Xmx512M"' >> /etc/thingsboard/conf/thingsboard.conf
+
 echo -e "\e[30;48;5;82m*** Configuring database for Thingsboard ***\e[0m"
 echo '# DB Configuration' >> /etc/thingsboard/conf/thingsboard.conf
 echo 'export DATABASE_ENTITIES_TYPE=sql' >> /etc/thingsboard/conf/thingsboard.conf
