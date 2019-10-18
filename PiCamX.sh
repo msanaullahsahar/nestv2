@@ -13,7 +13,7 @@ sudo python setup.py install
 cd
 echo -e "\e[30;48;5;82m***** Installing Screen *****\e[0m"
 sudo apt-get install screen -y
-echo -e "\e[30;48;5;82m***** Installing Motion Camera Software *****\e[0m"
+echo -e "\e[30;48;5;82m***** Installing Motion CAM Software *****\e[0m"
 sudo apt-get install motion -y
 echo -e "\e[30;48;5;82m***** Modifying Motion File - /etc/motion/motion.conf *****\e[0m"
 sudo sed -i -e 's/daemon off/daemon on/g' /etc/motion/motion.conf
